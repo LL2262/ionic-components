@@ -8,64 +8,59 @@ import { AlertController } from '@ionic/angular';
 })
 export class AlertPage implements OnInit {
 
-  titulo: string;
+  titulo: string = 'Alert';
 
   constructor( public alertCtrl: AlertController ) { }
 
   ngOnInit() {
   }
 
-  async presentInput() {
-
-    const input = await this.alertCtrl.create({
-      header: 'Input',
-      subHeader: 'Ingrese su nombre:',
-      inputs: [
-        {
-          name: 'txtNombre',
-          type: 'text',
-          placeholder: 'Nombre'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'OK',
-          handler: ( data ) => {
-            console.log('Confirm Ok', data);
-            this.titulo = data.txtNombre;
-          }
-        }
-      ]
-    });
-
-    await input.present();
-
-  }
-
-  async presentAlert() {
+  async presentAlertConfirm() {
     const alert = await this.alertCtrl.create({
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      header: 'Confirm!',
+      message: 'Message <strong>text</strong>!!!',
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Cancelar');
+            console.log('Confirm Cancel: blah');
           }
-        },
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  async presentAlertPrompt() {
+    const alert = await this.alertCtrl.create({
+      header: 'Ingrese nombre',
+      inputs: [
         {
-            text: 'Ok',
-            handler: (blah) => {
-              console.log('Botón OK');
+          name: 'titulo',
+          type: 'text',
+          placeholder: 'Titulo para cambiar header'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          }
+        }, {
+          text: 'Ok',
+          handler: (data) => {
+            console.log('Confirm Ok', data);
+            this.titulo = data.titulo;
           }
         }
       ]
