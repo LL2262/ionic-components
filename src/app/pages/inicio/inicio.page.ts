@@ -47,6 +47,21 @@ export class InicioPage implements OnInit {
       icon: 'car',
       name: 'Fabs',
       redirectTo: '/fab'
+    },
+    {
+      icon: 'grid',
+      name: 'Grids - Rows',
+      redirectTo: '/grid'
+    },
+    {
+      icon: 'infinite',
+      name: 'Infinite Scroll',
+      redirectTo: '/infinit-scroll'
+    },
+    {
+      icon: 'hammer',
+      name: 'Input Forms',
+      redirectTo: '/input'
     }
   ];
 
